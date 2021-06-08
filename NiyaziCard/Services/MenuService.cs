@@ -58,7 +58,7 @@ namespace BakuCard.Services
             try
             {
                 card.AddBalance(id, money);
-                var table = new ConsoleTable("Card ID", "Balance");
+                var table = new ConsoleTable("Card ID", "Current balance");
                 foreach (var item in card.Cards)
                 {
                     table.AddRow(item.ID, item.Balance);
@@ -89,6 +89,24 @@ namespace BakuCard.Services
                 foreach (var item in card.Cards)
                 {
                     table.AddRow(item.ID, item.Balance);
+                }
+                table.Write();
+                Console.WriteLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Something went wrong!");
+                Console.WriteLine(e.Message);
+            }            
+        }
+        public static void AllCardsMenu()
+        {
+            var table = new ConsoleTable("Card ID", "Current balance", "Date of creation");
+            try
+            {
+                foreach (var item in card.AllCards())
+                {
+                    table.AddRow(item.ID, item.Balance, item.Date);
                 }
                 table.Write();
                 Console.WriteLine();

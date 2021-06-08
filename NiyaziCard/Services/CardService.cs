@@ -44,5 +44,11 @@ namespace BakuCard.Services
                 throw new ArgumentOutOfRangeException($"There is not enough balance on your card. Current balance : {card.Balance}");
             card.Balance -= 0.3;
         }
+        public List<Card> AllCards()
+        {
+            if (Cards.Count <=0)
+                throw new ArgumentNullException("There are no cards in the data base!");
+            return Cards;            
+        }
     }
 }
